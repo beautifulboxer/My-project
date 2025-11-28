@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="dashboard">
+        <div class="header">
+            <h1>👨‍🎓 Student Dashboard</h1>
+            <div class="user-info">
+                Welcome, {{ name }} ({{ roll }}) 
+                <a href="/" class="logout-btn">Logout</a>
+            </div>
+        </div>
+
+        <div class="menu-grid">
+            <div class="menu-card" onclick="location.href='/submit_request'">
+                <h3>🏠 Submit Hostel Request</h3>
+                <p>Apply for hostel accommodation</p>
+            </div>
+
+            <div class="menu-card" onclick="location.href='/submit_review'">
+                <h3>⭐ Submit Review</h3>
+                <p>Provide feedback on facilities</p>
+            </div>
+
+            <div class="menu-card" onclick="location.href='/check_status'">
+                <h3>📊 Check Request Status</h3>
+                <p>View your application status</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

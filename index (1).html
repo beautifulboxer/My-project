@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hostel Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="login-container">
+        <div class="header">
+            <h1>🏠 Hostel Management System</h1>
+            <p>Welcome to Student Accommodation Portal</p>
+        </div>
+        
+        <div class="login-options">
+            <div class="login-card" onclick="showLogin('admin')">
+                <h2>👨‍💼 Admin Login</h2>
+                <p>System Administrator Access</p>
+            </div>
+            
+            <div class="login-card" onclick="showLogin('student')">
+                <h2>👨‍🎓 Student Portal</h2>
+                <p>Student Services & Requests</p>
+            </div>
+        </div>
+
+        <!-- Admin Login Form -->
+        <div id="adminLogin" class="login-form hidden">
+            <h2>Admin Login</h2>
+            <form action="/admin_login" method="POST">
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+            <button onclick="hideLogin()">Back</button>
+        </div>
+
+        <!-- Student Login Form -->
+        <div id="studentLogin" class="login-form hidden">
+            <h2>Student Portal</h2>
+            <div class="student-options">
+                <button type="button" onclick="showStudentForm('login')">Existing Student Login</button>
+                <button type="button" onclick="showStudentForm('register')">New Student Registration</button>
+            </div>
+
+            <div id="studentLoginForm" class="hidden">
+                <form action="/student_login" method="POST">
+                    <input type="text" name="roll" placeholder="Roll Number" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <button type="submit">Login</button>
+                </form>
+                <button type="button" onclick="hideStudentForm()">Back</button>
+            </div>
+
+            <div id="studentRegisterForm" class="hidden">
+                <form action="/student_register" method="POST">
+                    <input type="text" name="name" placeholder="Full Name" required>
+                    <input type="text" name="roll" placeholder="Roll Number" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <button type="submit">Register</button>
+                </form>
+                <button type="button" onclick="hideStudentForm()">Back</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showLogin(type) {
+            document.getElementById('adminLogin').classList.add('hidden');
+            document.getElementById('studentLogin').classList.add('hidden');
+            document.getElementById(type + 'Login').classList.remove('hidden');
+        }
+
+        function hideLogin() {
+            document.getElementById('adminLogin').classList.add('hidden');
+            document.getElementById('studentLogin').classList.add('hidden');
+        }
+
+        function showStudentForm(type) {
+            document.getElementById('studentLoginForm').classList.add('hidden');
+            document.getElementById('studentRegisterForm').classList.add('hidden');
+            document.getElementById('student' + type.charAt(0).toUpperCase() + type.slice(1) + 'Form').classList.remove('hidden');
+        }
+
+        function hideStudentForm() {
+            document.getElementById('studentLoginForm').classList.add('hidden');
+            document.getElementById('studentRegisterForm').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>

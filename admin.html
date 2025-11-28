@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="dashboard">
+        <div class="header">
+            <h1>👨‍💼 Admin Dashboard</h1>
+            <a href="/" class="logout-btn">Logout</a>
+        </div>
+
+        <div class="menu-grid">
+            <div class="menu-card" onclick="location.href='/manage_requests'">
+                <h3>📋 Manage Requests</h3>
+                <p>Approve or reject hostel requests</p>
+            </div>
+
+            <div class="menu-card" onclick="location.href='/view_requests'">
+                <h3>👀 View All Requests</h3>
+                <p>See all submitted requests</p>
+            </div>
+
+            <div class="menu-card" onclick="location.href='/view_reviews'">
+                <h3>⭐ View Reviews</h3>
+                <p>Check student feedback</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
